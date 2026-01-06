@@ -1,0 +1,41 @@
+[tool.black]
+line-length = 120
+target-version = ["py312"]
+skip-string-normalization = true
+
+extend-exclude = ".git|.venv|.idea|__pycache__|migrations|.pytest_cache|build|dist"
+
+[tool.isort]
+profile = "black"
+line_length = 120
+skip = [
+    ".git",
+    ".venv",
+    ".idea",
+    "__pycache__",
+    "migrations",
+    ".pytest_cache",
+    "build",
+    "dist"
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "habit_tracker.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
+addopts = """
+--cov=.
+--cov-report=term-missing
+--no-cov-on-fail
+"""
+
+norecursedirs = [
+    ".git",
+    ".venv",
+    ".idea",
+    "__pycache__",
+    "migrations",
+    ".pytest_cache",
+    "build",
+    "dist"
+]
