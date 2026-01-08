@@ -9,6 +9,10 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
+    def perform_create(self, serializer):
+        user = serializer.save()
+        Token.objects.create(user=user)
+
 
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
