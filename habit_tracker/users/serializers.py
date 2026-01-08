@@ -36,4 +36,3 @@ class LoginSerializer(serializers.Serializer):
         token, _ = Token.objects.get_or_create(user=user)
 
         return {"token": token.key}
-        
