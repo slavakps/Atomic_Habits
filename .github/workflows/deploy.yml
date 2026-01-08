@@ -47,8 +47,9 @@ jobs:
           pytest
 
       - name: Build Docker images
-        run: |
-          docker compose build
+        run: docker compose build
+        working-directory: Atomic_Habits/habit_tracker
+
 
   deploy:
     runs-on: ubuntu-latest
