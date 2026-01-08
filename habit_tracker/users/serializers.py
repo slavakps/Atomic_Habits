@@ -31,7 +31,7 @@ class LoginSerializer(serializers.Serializer):
         )
 
         if not user:
-            raise serializers.ValidationError("Invalid credentials")
+            raise serializers.ValidationError("Неверный логин или пароль.")
 
         token, _ = Token.objects.get_or_create(user=user)
 
