@@ -35,6 +35,12 @@ jobs:
         run: |
           pip install flake8 black
           flake8 habit_tracker
+          
+      - name: Run migrations
+        env:
+          DJANGO_SETTINGS_MODULE: habit_tracker.settings
+        run: |
+          python habit_tracker/manage.py migrate
 
       - name: Run tests
         run: |
