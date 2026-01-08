@@ -107,7 +107,6 @@ else:
     }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -157,8 +156,8 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_TIMEZONE = 'UTC'
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY','')
-TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN','')
+SECRET_KEY = os.getenv('SECRET_KEY', '')
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Habit Tracker API',
