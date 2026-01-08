@@ -1,4 +1,11 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-User.add_to_class('tg_chat_id', models.CharField(max_length=50, null=True, blank=True))
+
+class User(AbstractUser):
+    tg_chat_id = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        verbose_name="Telegram chat id",
+    )
