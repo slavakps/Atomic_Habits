@@ -18,42 +18,40 @@ jobs:
       TELEGRAM_BOT_TOKEN: test-token
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+    
       - name: Debug paths
         run: |
           pwd
           ls -la
-
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
+          ls -la habit_tracker
+    
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
+    
       - name: Install deps
         run: |
           pip install --upgrade pip
           pip install -r habit_tracker/requirements.txt
-
+    
       - name: Run linters
         run: |
           pip install flake8 black
           flake8 habit_tracker
-          
+    
       - name: Run migrations
-        env:
-          DJANGO_SETTINGS_MODULE: habit_tracker.settings
         run: |
           python habit_tracker/manage.py migrate
-
+    
       - name: Run tests
         run: |
           pytest
-
+    
       - name: Build Docker images
-        run: docker compose -f docker-compose.yml build
-
+        run: docker compose -f habit_tracker/docker-compose.yml build
 
   deploy:
     runs-on: ubuntu-latest
