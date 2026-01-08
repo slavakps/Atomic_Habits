@@ -2,7 +2,9 @@ name: CI/CD Habit Tracker
 
 on:
   push:
-    branches: ["main"]
+    branches: 
+    - first_branch
+  workflow_dispatch:
 
 jobs:
   build_and_test:
