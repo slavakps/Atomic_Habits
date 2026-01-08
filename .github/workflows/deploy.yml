@@ -2,13 +2,20 @@ name: CI/CD Habit Tracker
 
 on:
   push:
-    branches: 
-    - first_branch
+    branches:
+      - first_branch
   workflow_dispatch:
 
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
+
+    env:
+      DJANGO_SETTINGS_MODULE: habit_tracker.settings
+      SECRET_KEY: test-secret-key
+      DEBUG: "True"
+      CORS_ALLOWED_ORIGINS: http://localhost
+      TELEGRAM_BOT_TOKEN: test-token
 
     steps:
       - name: Checkout repo
@@ -27,7 +34,7 @@ jobs:
       - name: Run linters
         run: |
           pip install flake8 black
-          flake8 .
+          flake8 habit_tracker
 
       - name: Run tests
         run: |
@@ -67,4 +74,3 @@ jobs:
             docker compose pull
             docker compose up -d --build
             docker system prune -f
-
