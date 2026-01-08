@@ -7,5 +7,4 @@ class User(AbstractUser):
         max_length=64,
         null=True,
         blank=True,
-        verbose_name="Telegram chat id",
     )
