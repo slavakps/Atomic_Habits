@@ -65,8 +65,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: |
-            docker-compose.yml
-            .env
+            habit_tracker/docker-compose.yml
+#            .env
           target: /home/${{ secrets.SERVER_USER }}/Atomic_Habits/
 
       - name: Deploy via SSH
